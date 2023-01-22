@@ -18,25 +18,25 @@ class LandingPageFragment : Fragment() {
     private lateinit var binding: FragmentLandingPageBinding
     companion object {
         @JvmStatic
-        fun newInstance(imageResource: Int, text: String,visibility: Boolean) =
+        fun newInstance(imageResource: Int, text: String,visibility: Int) =
             LandingPageFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_IMG, imageResource)
                     putString(ARG_EDIT_TEXT, text)
-                    putBoolean(ARG_BTN_VISIBLITY,visibility)
+                    putInt(ARG_BTN_VISIBLITY,visibility)
                 }
             }
     }
     private var imageResource: Int? = null
     private var text: String? = null
-    private var buttonVisibility: Boolean = true
+    private var buttonVisibility: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             imageResource = it.getInt(ARG_IMG)
             text = it.getString(ARG_EDIT_TEXT)
-            buttonVisibility = it.getBoolean(ARG_BTN_VISIBLITY)
+            buttonVisibility = it.getInt(ARG_BTN_VISIBLITY)
         }
     }
 
@@ -54,7 +54,7 @@ class LandingPageFragment : Fragment() {
             val intent = Intent(activity,LoginScreen::class.java)
             startActivity(intent)
         }
-        binding.ivNext.visibility = buttonVisibility
+        binding.ivNext.visibility = buttonVisibility!!
         binding.tvLpDesc.text = text
         imageResource.let {
             if (it != null) {
