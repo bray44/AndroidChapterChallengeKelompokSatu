@@ -14,4 +14,6 @@
     <string name="player_one_choose_item_instruction">${playerOne.getName()},\n silahkan pilih item mu</string>
     <string name="hasil_permainan">HASIL PERMAINAN</string>
     <string name="game_baru">Game Baru</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
