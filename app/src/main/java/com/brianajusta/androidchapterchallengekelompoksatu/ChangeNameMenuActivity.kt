@@ -1,15 +1,10 @@
 package com.brianajusta.androidchapterchallengekelompoksatu
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
-import com.brianajusta.androidchapterchallengekelompoksatu.R
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityChangeNameMenuBinding
 
-class ChangeNameMenu : AppCompatActivity() {
+class ChangeNameMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChangeNameMenuBinding
 
