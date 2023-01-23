@@ -2,6 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="3dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/items_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,14 +12,15 @@
         android:id="@+id/tv_history_player_one_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="34sp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Player 1" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_history_player_one_item"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_history_player_one_name"
@@ -28,22 +32,32 @@
         android:id="@+id/tv_history_player_two_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="34sp"
+        android:textSize="30sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_history_player_one_item"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Player 2" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_history_player_two_item"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_history_player_two_name"
-        app:layout_constraintStart_toEndOf="@+id/tv_history_player_two_name"
+        app:layout_constraintEnd_toStartOf="@+id/tv_game_result_history_item"
         app:layout_constraintTop_toTopOf="@+id/tv_history_player_two_name"
         tools:srcCompat="@tools:sample/avatars" />
 
-
+    <TextView
+        android:id="@+id/tv_game_result_history_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Player 1 \n menang" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

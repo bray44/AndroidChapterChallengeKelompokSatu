@@ -11,9 +11,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.FragmentGameResultDialogBinding
 
-class GameResultDialogFragment : DialogFragment() {
+class GameResultDialogFragment : DialogFragment(), PlayerModelContract.View {
     private lateinit var binding: FragmentGameResultDialogBinding
     private lateinit var listener: ResultDialogListener
+    private lateinit var playerOnePresenter: PlayerModelContract.Presenter
+    private lateinit var playerTwoPresenter: PlayerModelContract.Presenter
+    private lateinit var database: GameRoomDatabase
+    private val playerOnePref by lazy {
+        requireContext().getSharedPreferences("PLAYER_ONE_PREF", Context.MODE_PRIVATE)
+    }
+    private val playerTwoPref by lazy {
+        requireContext().getSharedPreferences("PLAYER_TWO_PREF", Context.MODE_PRIVATE)
+    }
 
     interface ResultDialogListener {
         fun resetAllTextAndItems()
@@ -35,14 +44,26 @@ class GameResultDialogFragment : DialogFragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        playerOnePresenter = PlayerDataPresenter(this, playerOnePref)
+        playerTwoPresenter = PlayerDataPresenter(this, playerTwoPref)
+
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvGameResultWinnerDialog.text = SutJepangModel.calculateResult()
-        binding.tvScoreResult.text = "${playerOne.getScore()}:${playerTwo.getScore()}"
-        binding.tvPlayerOneNameOnScore.text = playerOne.getName()
-        binding.tvPlayerTwoNameOnScore.text = playerTwo.getName()
+
+
+
+        binding.tvGameResultWinnerDialog.text = calculateResult()
+        binding.tvScoreResult.text = "${playerOnePresenter.getScore()}:${playerTwoPresenter.getScore()}"
+        binding.tvPlayerOneNameOnScore.text = playerOnePresenter.getName()
+        binding.tvPlayerTwoNameOnScore.text = playerTwoPresenter.getName()
+
 
 
         binding.ivCloseDialogButton.setOnClickListener {
@@ -69,4 +90,23 @@ class GameResultDialogFragment : DialogFragment() {
             dismiss()
         }
     }
+
+    fun calculateResult(): String {
+        if (playerOnePresenter.getItem() == playerTwoPresenter.getItem()) {
+            return "DRAW!"
+        } else if (playerOnePresenter.getItem() == "KERTAS" && playerTwoPresenter.getItem() == "BATU") {
+            playerOnePresenter.addScore()
+            return "${playerOnePresenter.getName()}\n MENANG!"
+        } else if (playerOnePresenter.getItem() == "GUNTING" && playerTwoPresenter.getItem() == "KERTAS") {
+            playerOnePresenter.addScore()
+            return "${playerOnePresenter.getName()}\n MENANG!"
+        } else if (playerOnePresenter.getItem() == "BATU" && playerTwoPresenter.getItem() == "GUNTING") {
+            playerOnePresenter.addScore()
+            return "${playerOnePresenter.getName()}\n MENANG!"
+        } else {
+            playerTwoPresenter.addScore()
+            return "${playerTwoPresenter.getName()}\n MENANG!"
+        }
+    }
+
 }
