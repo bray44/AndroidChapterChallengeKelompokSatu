@@ -1,4 +1,4 @@
-package com.brianajusta.androidchapterchallengekelompoksatu
+package com.brianajusta.androidchapterchallengekelompoksatu.tutorial
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

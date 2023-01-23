@@ -8,6 +8,8 @@ import android.os.Bundle
 import com.brianajusta.androidchapterchallengekelompoksatu.changename.ChangeNameMenuActivity
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityMainMenuBinding
 import com.brianajusta.androidchapterchallengekelompoksatu.gamehistory.GameHistoryActivity
+import com.brianajusta.androidchapterchallengekelompoksatu.gameplay.ChoosePlayerActivity
+import com.brianajusta.androidchapterchallengekelompoksatu.tutorial.TutorialActivity
 
 class MainMenuActivity : AppCompatActivity(), PlayerModelContract.View {
 

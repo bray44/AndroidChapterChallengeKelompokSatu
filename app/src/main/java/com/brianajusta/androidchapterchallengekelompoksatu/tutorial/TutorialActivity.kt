@@ -1,7 +1,8 @@
-package com.brianajusta.androidchapterchallengekelompoksatu
+package com.brianajusta.androidchapterchallengekelompoksatu.tutorial
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.brianajusta.androidchapterchallengekelompoksatu.tutorial.TutorialFragment
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityTutorialBinding
 
 class TutorialActivity : AppCompatActivity() {

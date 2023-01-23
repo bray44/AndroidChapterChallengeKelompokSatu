@@ -8,7 +8,7 @@
     android:minWidth="270dp"
     android:minHeight="270dp"
     android:padding="5dp"
-    tools:context=".GameResultDialogFragment">
+    tools:context=".gameplay.GameResultDialogFragment">
 
 
     <androidx.appcompat.widget.AppCompatTextView

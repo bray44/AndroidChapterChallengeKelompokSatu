@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    tools:context=".GameplayVsComActivity">
+    tools:context=".gameplay.GameplayVsComActivity">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/iv_home_button"

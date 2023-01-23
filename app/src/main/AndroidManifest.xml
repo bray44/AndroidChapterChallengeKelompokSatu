@@ -63,7 +63,7 @@
         </activity>
 
         <activity
-            android:name=".GameplayVsPlayerActivity"
+            android:name=".gameplay.GameplayVsPlayerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -71,7 +71,7 @@
         </activity>
 
         <activity
-            android:name=".GameplayVsComActivity"
+            android:name=".gameplay.GameplayVsComActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -79,7 +79,7 @@
         </activity>
 
         <activity
-            android:name=".ChoosePlayerActivity"
+            android:name=".gameplay.ChoosePlayerActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -95,7 +95,7 @@
         </activity>
 
         <activity
-            android:name=".TutorialActivity"
+            android:name=".tutorial.TutorialActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

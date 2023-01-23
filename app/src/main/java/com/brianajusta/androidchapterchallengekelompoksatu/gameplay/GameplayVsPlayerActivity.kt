@@ -1,4 +1,4 @@
-package com.brianajusta.androidchapterchallengekelompoksatu
+package com.brianajusta.androidchapterchallengekelompoksatu.gameplay
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,12 +6,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.forEach
+import com.brianajusta.androidchapterchallengekelompoksatu.*
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityGameplayVsComBinding
 import kotlin.random.Random
 
-class GameplayVsComActivity : AppCompatActivity(), GameResultDialogFragment.ResultDialogListener, PlayerModelContract.View {
+class GameplayVsPlayerActivity : AppCompatActivity(), GameResultDialogFragment.ResultDialogListener,
+    PlayerModelContract.View {
 
     private lateinit var binding: ActivityGameplayVsComBinding
     private lateinit var playerOnePresenter: PlayerModelContract.Presenter
@@ -29,22 +30,23 @@ class GameplayVsComActivity : AppCompatActivity(), GameResultDialogFragment.Resu
         playerOnePresenter = PlayerDataPresenter(this, playerOnePref)
         playerTwoPresenter = PlayerDataPresenter(this, playerTwoPref)
 
-
-        binding.tvPlayerOneName.text = playerOne.getName()
+        binding.tvPlayerOneName.text = playerOnePresenter.getName()
+        binding.tvPlayerTwoName.text = playerTwoPresenter.getName()
         resetGameText()
 
         val listenerForPlayerOne = View.OnClickListener { view ->
 
             view.isSelected = true
             setChosenItemTo(playerOne)
-            playerTwoChoosingItem()
-            showGameResult()
-            allPlayersItemsIsEnabled(false)
+            playerOneItemsIsEnabled(false)
+            showTextInstructionOfPlayerTwo()
         }
 
-        val listenerForPlayerTwo = View.OnClickListener {
-            val toast = Toast.makeText(this, "Klik item di bagian kiri", Toast.LENGTH_SHORT)
-            toast.show()
+        val listenerForPlayerTwo = View.OnClickListener { view ->
+            view.isSelected = true
+            setChosenItemTo(playerTwo)
+            showGameResult()
+            allPlayersItemsIsEnabled(false)
         }
 
 
@@ -65,9 +67,13 @@ class GameplayVsComActivity : AppCompatActivity(), GameResultDialogFragment.Resu
         }
 
         binding.ivRestartGameButton.setOnClickListener {
-            resetGameText()
-            resetAllItems()
+            resetAllTextAndItems()
         }
+    }
+
+    private fun showTextInstructionOfPlayerTwo() {
+        binding.tvPlayerTwoMessage.text = "${playerTwoPresenter.getName()},\n silahkan pilih item mu"
+        binding.tvPlayerOneMessage.text = ""
     }
 
 
@@ -99,17 +105,13 @@ class GameplayVsComActivity : AppCompatActivity(), GameResultDialogFragment.Resu
         }
     }
 
-    private fun playerTwoChoosingItem() {
-        chooseRandomItem().isSelected = true
-        setChosenItemTo(playerTwo)
-    }
 
     @SuppressLint("SetTextI18n")
     private fun showTextOfPlayerChosenItem() {
         binding.tvPlayerOneMessage.text =
-            "${playerOnePresenter.getName()}\n memilih ${playerOnePresenter.getItem()}."
+            "${playerOne.getName()}\n memilih ${playerOnePresenter.getItem()}."
         binding.tvPlayerTwoMessage.text =
-            "${playerTwoPresenter.getName()}\n memilih ${playerTwoPresenter.getItem()}."
+            "${playerTwo.getName()}\n memilih ${playerTwoPresenter.getItem()}."
     }
 
     private fun showGameResultDialog() {
@@ -126,6 +128,10 @@ class GameplayVsComActivity : AppCompatActivity(), GameResultDialogFragment.Resu
     private fun allPlayersItemsIsEnabled(boolean: Boolean) {
         binding.clPlayerOneItemList.forEach { it.isEnabled = boolean }
         binding.clPlayerTwoItemList.forEach { it.isEnabled = boolean }
+    }
+
+    private fun playerOneItemsIsEnabled(boolean: Boolean) {
+        binding.clPlayerOneItemList.forEach { it.isEnabled = boolean }
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,11 +1,11 @@
-package com.brianajusta.androidchapterchallengekelompoksatu
+package com.brianajusta.androidchapterchallengekelompoksatu.gameplay
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import com.brianajusta.androidchapterchallengekelompoksatu.*
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityChoosePlayerBinding
 
 class ChoosePlayerActivity : AppCompatActivity(), PlayerModelContract.View {

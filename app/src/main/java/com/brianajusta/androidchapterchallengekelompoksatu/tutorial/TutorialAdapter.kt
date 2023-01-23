@@ -1,4 +1,4 @@
-package com.brianajusta.androidchapterchallengekelompoksatu
+package com.brianajusta.androidchapterchallengekelompoksatu.tutorial
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
