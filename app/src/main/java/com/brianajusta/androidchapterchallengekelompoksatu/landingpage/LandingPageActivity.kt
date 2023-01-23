@@ -1,16 +1,12 @@
 package com.brianajusta.androidchapterchallengekelompoksatu.landingpage
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.brianajusta.androidchapterchallengekelompoksatu.LoginScreen
 import com.brianajusta.androidchapterchallengekelompoksatu.R
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityLandingPageBinding
-import com.brianajusta.androidchapterchallengekelompoksatu.databinding.LoginScreenBinding
 
-class LandingPage : AppCompatActivity() {
+class LandingPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandingPageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

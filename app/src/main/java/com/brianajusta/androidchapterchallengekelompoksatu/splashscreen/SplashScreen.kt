@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivitySplashScreenBinding
-import com.brianajusta.androidchapterchallengekelompoksatu.landingpage.LandingPage
+import com.brianajusta.androidchapterchallengekelompoksatu.landingpage.LandingPageActivity
 
 class SplashScreen : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler().postDelayed({
-            val intent = Intent(this@SplashScreen, LandingPage::class.java)
+            val intent = Intent(this@SplashScreen, LandingPageActivity::class.java)
             startActivity(intent)
             finish()
         },5000)

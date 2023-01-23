@@ -6,17 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.forEach
-import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityMainBinding
+import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityGameplayVsComBinding
 import kotlin.random.Random
 
 class GameplayVsPlayerActivity : AppCompatActivity(), GameResultDialogFragment.ResultDialogListener  {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityGameplayVsComBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityGameplayVsComBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.tvPlayerOneName.text = playerOne.getName()

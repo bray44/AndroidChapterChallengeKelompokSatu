@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
-import com.brianajusta.androidchapterchallengekelompoksatu.LoginScreen
+import com.brianajusta.androidchapterchallengekelompoksatu.LoginScreenActivity
 import com.brianajusta.androidchapterchallengekelompoksatu.databinding.FragmentLandingPageBinding
 
 private const val ARG_IMG = "IMAGE"
@@ -51,7 +50,7 @@ class LandingPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ivNext.setOnClickListener{
-            val intent = Intent(activity,LoginScreen::class.java)
+            val intent = Intent(activity,LoginScreenActivity::class.java)
             startActivity(intent)
         }
         binding.ivNext.visibility = buttonVisibility!!

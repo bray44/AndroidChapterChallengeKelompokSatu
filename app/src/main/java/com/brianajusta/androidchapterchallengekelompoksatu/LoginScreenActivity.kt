@@ -1,20 +1,19 @@
 package com.brianajusta.androidchapterchallengekelompoksatu
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
-import com.brianajusta.androidchapterchallengekelompoksatu.databinding.LoginScreenBinding
-import com.brianajusta.androidchapterchallengekelompoksatu.landingpage.LandingPage
+import com.brianajusta.androidchapterchallengekelompoksatu.databinding.ActivityLoginScreenBinding
 
-class LoginScreen : AppCompatActivity() {
 
-    private lateinit var binding: LoginScreenBinding
+class LoginScreenActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoginScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = LoginScreenBinding.inflate(layoutInflater)
+        binding = ActivityLoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         enableButton()
 
@@ -24,6 +23,11 @@ class LoginScreen : AppCompatActivity() {
         binding.etLoginPassword.doAfterTextChanged {
             enableButton()
         }
+
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainMenuActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun enableButton() {
@@ -32,4 +36,5 @@ class LoginScreen : AppCompatActivity() {
 
         binding.btnLogin.isEnabled = email.isNotEmpty() && password.isNotEmpty()
     }
+
 }
